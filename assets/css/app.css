@@ -1,1 +1,33 @@
 /* This file is for your main application css. */
+
+.notes__container {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.notes__item {
+  flex: none;
+  width: 200px;  
+  height: 200px;
+  margin: 5px;
+  position: relative;
+  padding: 5px;
+  -webkit-box-shadow: 10px 10px 29px -6px rgba(0,0,0,0.57);
+  -moz-box-shadow: 10px 10px 29px -6px rgba(0,0,0,0.57);
+  box-shadow: 10px 10px 29px -6px rgba(0,0,0,0.57);
+}
+
+.notes__item-controls {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.notes__item-control {
+  margin: 3px;
+}
