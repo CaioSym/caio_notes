@@ -1,8 +1,8 @@
-<h2>Listing Notes</h2>
 
 <div class="notes__container">
   <%= for note <- @notes do %>
     <div class="notes__item" style="background-color: <%= note.color %>;">
+      <img class="pin" src="/images/pin.png" alt="">
       <div class="notes__item-contents"><%= note.contents %></div>
       <div class="notes__item-controls">
         <button type="button" class="notes__item-control btn btn-default btn-xs"
@@ -11,7 +11,7 @@
                 data-note-contents="<%= note.contents %>" data-note-color="<%= note.color %>" >
           <i class="fas fa-pencil-alt"></i> 
         </button>
-        <%= link to: note_path(@conn, :delete, note), method: :delete, data: [confirm: "Are you sure?"],
+        <%= link to: note_path(@conn, :delete, note), method: :delete,
           class: "notes__item-control btn btn-danger btn-xs" do %>
           <i class="fas fa-trash-alt"></i> 
         <% end %>
@@ -52,5 +52,5 @@
 <button type="button" id="new-note-btn" class="btn btn-default btn-xs" 
         data-toggle="modal" data-target="#note-modal" data-action="new"
         data-note-path="<%= note_path(@conn, :create) %>">
-  <i class="fas fa-plus"></i>
+  <i class="fas fa-plus"></i> <span>New</span>
 </button>
