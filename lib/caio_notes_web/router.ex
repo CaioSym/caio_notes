@@ -18,7 +18,7 @@ defmodule CaioNotesWeb.Router do
 
     get "/", NoteController, :index
 
-    resources "/notes", NoteController
+    resources "/notes", NoteController, only: [:create, :update, :delete]
 
   end
 
