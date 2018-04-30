@@ -18,7 +18,9 @@ defmodule CaioNotes.Notes do
 
   """
   def list_notes do
-    Repo.all(Note)
+    Note
+    |>order_by(asc: :id)
+    |>Repo.all
   end
 
   @doc """
