@@ -13,13 +13,13 @@
 alias CaioNotes.Notes.Note
 alias CaioNotes.Repo
 
-%Note{contents: "I'm a happy note", color: "#FF00FF"} |> Repo.insert!
-%Note{contents: "I'm another note", color: "#0000FF"} |> Repo.insert!
-%Note{contents: "I'm another note 2", color: "#0000FF"} |> Repo.insert!
-%Note{contents: "I'm another note 3", color: "#0000FF"} |> Repo.insert!
-%Note{contents: "I'm another note 4", color: "#0000FF"} |> Repo.insert!
-%Note{contents: "I'm another note 5", color: "#0000FF"} |> Repo.insert!
-%Note{contents: "I'm another note 6", color: "#0000FF"} |> Repo.insert!
-%Note{contents: "I'm another note 7", color: "#0000FF"} |> Repo.insert!
-%Note{contents: "I'm another note 8", color: "#0000FF"} |> Repo.insert!
-%Note{contents: "I'm another note 9", color: "#0000FF"} |> Repo.insert!
+%Note{contents: "I'm a happy note", color: "#B4CCE1"} |> Repo.insert!
+%Note{contents: "I'm another note", color: "#2BADE4"} |> Repo.insert!
+%Note{contents: "I'm another note 2", color: "#FED84A"} |> Repo.insert!
+%Note{contents: "I'm another note 3", color: "#90909A"} |> Repo.insert!
+%Note{contents: "I'm another note 4", color: "#D6D4DF"} |> Repo.insert!
+%Note{contents: "I'm another note 5", color: "#2BADE4"} |> Repo.insert!
+%Note{contents: "I'm another note 6", color: "#90909A"} |> Repo.insert!
+%Note{contents: "I'm another note 7", color: "#FED84A"} |> Repo.insert!
+%Note{contents: "I'm another note 8", color: "#D6D4DF"} |> Repo.insert!
+%Note{contents: "I'm another note 9", color: "#FED84A"} |> Repo.insert!

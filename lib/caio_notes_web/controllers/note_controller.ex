@@ -6,12 +6,8 @@ defmodule CaioNotesWeb.NoteController do
 
   def index(conn, _params) do
     notes = Notes.list_notes()
-    render(conn, "index.html", notes: notes)
-  end
-
-  def new(conn, _params) do
     changeset = Notes.change_note(%Note{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "index.html", notes: notes, changeset: changeset)
   end
 
   def create(conn, %{"note" => note_params}) do
@@ -19,21 +15,11 @@ defmodule CaioNotesWeb.NoteController do
       {:ok, note} ->
         conn
         |> put_flash(:info, "Note created successfully.")
-        |> redirect(to: note_path(conn, :show, note))
+        |> redirect(to: note_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        conn
+        |> redirect(to: note_path(conn, :index))
     end
-  end
-
-  def show(conn, %{"id" => id}) do
-    note = Notes.get_note!(id)
-    render(conn, "show.html", note: note)
-  end
-
-  def edit(conn, %{"id" => id}) do
-    note = Notes.get_note!(id)
-    changeset = Notes.change_note(note)
-    render(conn, "edit.html", note: note, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "note" => note_params}) do
@@ -43,9 +29,10 @@ defmodule CaioNotesWeb.NoteController do
       {:ok, note} ->
         conn
         |> put_flash(:info, "Note updated successfully.")
-        |> redirect(to: note_path(conn, :show, note))
+        |> redirect(to: note_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", note: note, changeset: changeset)
+        conn
+        |> redirect(to: note_path(conn, :index))
     end
   end
 

@@ -16,7 +16,7 @@ defmodule CaioNotesWeb.Router do
   scope "/", CaioNotesWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", NoteController, :index
 
     resources "/notes", NoteController
 

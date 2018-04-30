@@ -1,5 +1,11 @@
 /* This file is for your main application css. */
 
+main {
+  background-image: url("/images/note-board-texture-background.jpg");
+  width: 100%;
+  min-height: 100%;
+}
+
 .notes__container {
   display: inline-flex;
   flex-direction: row;
@@ -17,7 +23,18 @@
   -webkit-box-shadow: 10px 10px 29px -6px rgba(0,0,0,0.57);
   -moz-box-shadow: 10px 10px 29px -6px rgba(0,0,0,0.57);
   box-shadow: 10px 10px 29px -6px rgba(0,0,0,0.57);
+  transition-property: -webkit-box-shadow, -moz-box-shadow, box-shadow, margin-top;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+  }
+  
+.notes__item:hover {
+  -webkit-box-shadow: 15px 15px 29px -6px rgba(0,0,0,0.77);
+  -moz-box-shadow: 15px 15px 29px -6px rgba(0,0,0,0.77);
+  box-shadow: 15px 15px 29px -6px rgba(0,0,0,0.77);
+  margin-top: -3px;
 }
+
 
 .notes__item-controls {
   display: flex;
@@ -28,6 +45,36 @@
   width: 100%;
 }
 
+.notes__item-contents {
+  position: absolute;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  height: 150px;
+}
+
 .notes__item-control {
   margin: 3px;
+}
+
+#new-note-btn {
+  position: relative;
+  margin: 5px;
+  right: 5px;
+}
+
+#note-modal__contents-field {
+  width: 90%
+}
+
+#note-modal__color-field {
+  position: relative;
+  right: 5px;
+}
+
+#new-note-btn {
+  position: relative;
+  right: 5px;
+  margin: 5px;
 }

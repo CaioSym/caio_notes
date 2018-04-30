@@ -1,16 +1,56 @@
 <h2>Listing Notes</h2>
 
-
 <div class="notes__container">
   <%= for note <- @notes do %>
     <div class="notes__item" style="background-color: <%= note.color %>;">
-      <div><%= note.contents %></div>
+      <div class="notes__item-contents"><%= note.contents %></div>
       <div class="notes__item-controls">
-        <div class="notes__item-control"><%= link "Edit", to: note_path(@conn, :edit, note), class: "btn btn-default btn-xs" %></div>
-        <div class="notes__item-control"><%= link "Delete", to: note_path(@conn, :delete, note), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></div>
+        <button type="button" class="notes__item-control btn btn-default btn-xs"
+                data-toggle="modal" data-target="#note-modal" data-action="edit"
+                data-note-path="<%= note_path(@conn, :update, note) %>"
+                data-note-contents="<%= note.contents %>" data-note-color="<%= note.color %>" >
+          <i class="fas fa-pencil-alt"></i> 
+        </button>
+        <%= link to: note_path(@conn, :delete, note), method: :delete, data: [confirm: "Are you sure?"],
+          class: "notes__item-control btn btn-danger btn-xs" do %>
+          <i class="fas fa-trash-alt"></i> 
+        <% end %>
       </div>
     </div>
   <% end %>
 </div>
 
-<span><%= link "New Note", to: note_path(@conn, :new) %></span>
+<div id="note-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <%= form_for @changeset, note_path(@conn, :create), [id: "note-modal__form", method: :put], fn f -> %>  
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= textarea f, :contents, id: "note-modal__contents-field", rows: 4 %>
+          <%= select f, :color, [
+            "Yellow": "#FED84A",       
+            "Light Blue": "#B4CCE1", 
+            "Blue": "#2BADE4", 
+            "Light Gray": "#D6D4DF",
+            "Dark Gray": "#90909A"
+          ], id: "note-modal__color-field"%>
+        </div>
+        <div class="modal-footer">
+          <%= submit "Save", class: "btn btn-primary" %>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<button type="button" id="new-note-btn" class="btn btn-default btn-xs" 
+        data-toggle="modal" data-target="#note-modal" data-action="new"
+        data-note-path="<%= note_path(@conn, :create) %>">
+  <i class="fas fa-plus"></i>
+</button>
